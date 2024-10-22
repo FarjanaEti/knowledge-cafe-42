@@ -9,15 +9,18 @@ import Header from './components/header/Header'
 function App() {
   const [bookmarks,setbookmarks]=useState([]);
   const [readTime, setReadTime]=useState(0);
-
+  
   const handleBookmarks=blog=>{
     const newBookmark=[...bookmarks,blog]
     setbookmarks(newBookmark)
   }
 
-  const handleTotalReadTime=time=>{
+  const handleTotalReadTime=(id,time)=>{
    const newReadTime=(readTime+time)
    setReadTime(newReadTime);
+   console.log("remove",id)
+   const remaining=bookmarks.filter(bookmark=>bookmark.id !== id)
+   setbookmarks(remaining)
   }
   return (
     <div>
